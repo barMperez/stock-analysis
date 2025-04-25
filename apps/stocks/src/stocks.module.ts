@@ -4,10 +4,10 @@ import { StocksController } from './stocks.controller';
 import { DatabaseModule } from '@common';
 import { ConfigModule } from '@common/config/config.module';
 import { StocksRepository } from './stocks.repository';
-import { StockSchema } from './models/stock.schema';
+import { StockDocument, StockSchema } from './models/stock.schema';
 
 @Module({
-  imports: [DatabaseModule, ConfigModule, DatabaseModule.forFeature([{ name: StocksRepository.name, schema: StockSchema }])],
+  imports: [DatabaseModule, ConfigModule, DatabaseModule.forFeature([{ name: StockDocument.name, schema: StockSchema }])],
   controllers: [StocksController],
   providers: [StocksService, StocksRepository],
 })
