@@ -11,7 +11,20 @@ services:
       - /usr/src/app/node_modules
     environment:
       - NODE_ENV=development
-    command: npm run start:dev
+    command: npm run start:dev stocks
+  auth:
+    build: 
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run start:dev auth
   mongodb:
     image: mongo:latest
     ports:
